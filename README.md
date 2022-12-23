@@ -14,7 +14,7 @@ The first benefit is resource size. Blazicons is desinged to leverage the SVG ve
 With Blazicons, an additional benifit is the ability to leverage intellisense.  The various icons available in a given icon library are displayed with Visual Studio's intellisense options.
 
 ## Getting Started
-To get started using Blazicons, just install the Blazicons NuGet package of the decired icon library.  The following options are currently among those available.
+To get started using Blazicons, just install the Blazicons NuGet package of the desired icon library.  The following options are currently among those available.
 
 - Blazicons.Bootstrap
 - Blazicons.FluentUI
