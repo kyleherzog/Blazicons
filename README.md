@@ -3,6 +3,8 @@ Provides support for displaying SVG based icons in Blazor projects.
 
 Check out the [Demo Site](http://blazicons.com).
 
+[![Build Status](https://dev.azure.com/kyleherzog/Blazicons/_apis/build/status/Blazicons?branchName=main)](https://dev.azure.com/kyleherzog/Blazicons/_build/latest?definitionId=15&branchName=main)
+
 ## Overview
 Blazicons is a simple library consisting of one Blazor component, the Blazicon.  A Blazicon component displays an SVG icon similar to how a font icon would be displayed.
 
