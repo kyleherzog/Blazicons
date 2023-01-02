@@ -3,6 +3,8 @@ Provides support for displaying SVG based icons in Blazor projects.
 
 Check out the [Demo Site](http://blazicons.com).
 
+![Nuget](https://img.shields.io/nuget/v/Blazicons)
+
 [![Build Status](https://dev.azure.com/kyleherzog/Blazicons/_apis/build/status/Blazicons?branchName=main)](https://dev.azure.com/kyleherzog/Blazicons/_build/latest?definitionId=15&branchName=main)
 
 ## Overview
