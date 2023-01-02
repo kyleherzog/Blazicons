@@ -17,7 +17,7 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <PackageIcon>blazicons-128.png</PackageIcon>
+    <PackageIcon>blazicons-lt-128.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -65,7 +65,7 @@
   </ItemGroup>
     <ItemGroup>
         <None Update="Base/BlaziconBase.razor.css" CssScope="blazicon" />
-        <None Update="blazicons-128.png">
+        <None Update="blazicons-lt-128.png">
           <Pack>True</Pack>
           <PackagePath>\</PackagePath>
         </None>
