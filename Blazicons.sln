@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazicons", "Blazicons\Blazicons.csproj", "{7D0FFE84-F36A-4D0C-9B1D-141B2F7E5AAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B43AAF74-2110-429D-8C36-61FD3F747B1C}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		CHANGELOG.md = CHANGELOG.md
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D0FFE84-F36A-4D0C-9B1D-141B2F7E5AAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D0FFE84-F36A-4D0C-9B1D-141B2F7E5AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D0FFE84-F36A-4D0C-9B1D-141B2F7E5AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D0FFE84-F36A-4D0C-9B1D-141B2F7E5AAB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {14F0FC13-88EA-463B-9ECF-06B2409BC322}
+	EndGlobalSection
+EndGlobal
