@@ -33,6 +33,11 @@ Next add the Blazicons reference to the `_Imports.razor` file in the Blazor proj
 @using Blazicons
 ```
 
+Ensure that the project styles.css file is referenced in the head tag section of the index.html/_Host.cshtml file.
+```html
+<link href="My.App.styles.css" rel="stylesheet" />
+```
+
 Finally, add the Blazicon component to your Blazor pages/components.
 ```html
 <Blazicon Svg="MdiIcon.Information"></Blazicon>

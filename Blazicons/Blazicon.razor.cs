@@ -1,10 +1,11 @@
-﻿using BlazorComponentUtilities;
+﻿using Blazicons.Base;
+using BlazorComponentUtilities;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Blazicons;
 
-public class Blazicon : ComponentBase
+public class Blazicon : BlaziconBase
 {
     /// <summary>
     /// Gets or sets the attributes specified but not explicitly mapped to a property.
@@ -16,20 +17,20 @@ public class Blazicon : ComponentBase
     public SvgIcon? Svg { get; set; }
 
     /// <inheritdoc/>
-    protected override void BuildRenderTree(RenderTreeBuilder builder)
+    protected override void BuildRenderTree(RenderTreeBuilder __builder)
     {
         if (Svg is not null)
         {
-            builder.OpenElement(0, "svg");
-            builder.AddAttribute(1, "viewBox", Svg.ViewBox);
-            builder.AddAttribute(2, "blazicon");
+            __builder.OpenElement(0, "svg");
+            __builder.AddAttribute(1, "viewBox", Svg.ViewBox);
+            __builder.AddAttribute(2, "blazicon");
             if (!string.IsNullOrEmpty(StyleAttribute))
             {
-                builder.AddAttribute(3, "style", StyleAttribute);
+                __builder.AddAttribute(3, "style", StyleAttribute);
             }
-            builder.AddMultipleAttributes(4, AttributesNoStyle);
-            builder.AddContent(5, new MarkupString(Svg.Content));
-            builder.CloseElement();
+            __builder.AddMultipleAttributes(4, AttributesNoStyle);
+            __builder.AddContent(5, new MarkupString(Svg.Content));
+            __builder.CloseElement();
 
         }
     }
