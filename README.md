@@ -59,5 +59,5 @@ A Blazicon is designed to be displayed with the size and color determined by cur
 
 Styling helper methods also are available on the `SvgIcon` object.
 ```html
-<Blazicon Svg='Ionicon.ShapesSharp.WithColor("#f00).WithSize("200%")'></Blazicon>
+<Blazicon Svg='Ionicon.ShapesSharp.WithColor("#f00").WithSize("200%")'></Blazicon>
 ```
