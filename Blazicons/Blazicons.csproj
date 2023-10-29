@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <LangVersion>11.0</LangVersion>
@@ -10,9 +10,9 @@
     <Description>Provides support for displaying SVG based icons in Blazor projects.</Description>
     <PackageProjectUrl>https://github.com/kyleherzog/Blazicons</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kyleherzog/Blazicons</RepositoryUrl>
-    <ApplicationVersion>1.1</ApplicationVersion>
+    <ApplicationVersion>1.2</ApplicationVersion>
     <ApplicationRevision>0</ApplicationRevision>
-    <Version>1.1</Version>
+    <Version>1.2</Version>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -28,8 +28,8 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BlazorComponentUtilities" Version="1.8.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.12" />
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.1">
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.24" />
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -37,7 +37,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.5.22">
+    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.7.30">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -45,7 +45,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.0.0.68202">
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.12.0.78982">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.435">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -69,5 +73,8 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Repos\kyleherzog\Blazicons\Blazicons\.editorconfig" />
   </ItemGroup>
 </Project>
