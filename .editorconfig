@@ -339,5 +339,8 @@ dotnet_diagnostic.SA1633.severity = none
 # Justification: Duplicate of CA5394
 dotnet_diagnostic.SCS0005.severity = none
 
+# VSSpell001: Spell Check
+dotnet_diagnostic.VSSpell001.severity = suggestion
+
 # VSTHRD200: Use "Async" suffix for async methods
 dotnet_diagnostic.VSTHRD200.severity = none
