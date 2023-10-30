@@ -10,6 +10,7 @@ namespace Blazicons;
 /// </summary>
 public class Blazicon : BlaziconBase
 {
+    private Dictionary<string, string> lastKnownAttributes = new();
     private int? lastSvgHash;
 
     /// <summary>
@@ -74,6 +75,19 @@ public class Blazicon : BlaziconBase
     /// <inheritdoc/>
     protected override bool ShouldRender()
     {
-        return !lastSvgHash.Equals(Svg?.GetHashCode());
+        var svgHash = Svg?.GetHashCode();
+        var hasSvgChanges = !lastSvgHash.Equals(svgHash);
+        lastSvgHash = svgHash;
+
+        return hasSvgChanges || HasAttributesChanged();
+    }
+
+    private bool HasAttributesChanged()
+    {
+        var attributes = Attributes.ToDictionary(x => x.Key, x => x.Value?.ToString() ?? string.Empty);
+        var result = !attributes.SequenceEqual(lastKnownAttributes);
+
+        lastKnownAttributes = attributes;
+        return result;
     }
 }
