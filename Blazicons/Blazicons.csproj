@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <LangVersion>11.0</LangVersion>
+    <LangVersion>12.0</LangVersion>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <IsTrimmable>true</IsTrimmable>
@@ -10,9 +10,9 @@
     <Description>Provides support for displaying SVG based icons in Blazor projects.</Description>
     <PackageProjectUrl>https://github.com/kyleherzog/Blazicons</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kyleherzog/Blazicons</RepositoryUrl>
-    <ApplicationVersion>1.2</ApplicationVersion>
+    <ApplicationVersion>2.0</ApplicationVersion>
     <ApplicationRevision>0</ApplicationRevision>
-    <Version>1.2</Version>
+    <Version>2.0</Version>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
