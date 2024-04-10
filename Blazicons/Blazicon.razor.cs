@@ -53,15 +53,20 @@ public class Blazicon : BlaziconBase
         if (Svg is not null)
         {
             __builder.OpenElement(0, "svg");
-            __builder.AddAttribute(1, "viewBox", Svg.ViewBox);
-            __builder.AddAttribute(2, "blazicon");
-            if (!string.IsNullOrEmpty(StyleAttribute))
+            for (var i = 0; i < Svg.Attributes.Count; i++)
             {
-                __builder.AddAttribute(3, "style", StyleAttribute);
+                var attribute = Svg.Attributes.ElementAt(i);
+                __builder.AddAttribute(i + 1, attribute.Key, attribute.Value);
             }
 
-            __builder.AddMultipleAttributes(4, AttributesNoStyle);
-            __builder.AddContent(5, new MarkupString(Svg.Content));
+            __builder.AddAttribute(102, "blazicon");
+            if (!string.IsNullOrEmpty(StyleAttribute))
+            {
+                __builder.AddAttribute(103, "style", StyleAttribute);
+            }
+
+            __builder.AddMultipleAttributes(104, AttributesNoStyle);
+            __builder.AddContent(105, new MarkupString(Svg.Content));
             __builder.CloseElement();
         }
     }
