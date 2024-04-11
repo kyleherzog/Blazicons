@@ -93,7 +93,7 @@ public sealed class SvgIcon : IEquatable<SvgIcon>
     /// <param name="content">The markup content that is to reside between the SVG start and end tags.</param>
     /// <param name="attributes">The values to use for the attributes on the SVG icon.</param>
     /// <returns>The newly created <see cref="SvgIcon"/> instance.</returns>
-    public static SvgIcon FromContent(string content, ReadOnlyDictionary<string, string>? attributes)
+    public static SvgIcon FromContent(string content, ReadOnlyDictionary<string, string>? attributes = null)
     {
         attributes ??= defaultAttributes;
 
