@@ -135,7 +135,7 @@ public sealed class SvgIcon : IEquatable<SvgIcon>
     /// <inheritdoc/>
     public override int GetHashCode()
     {
-        return HashCode.Combine(Content, ViewBox, Color, Size);
+        return HashCode.Combine(Content, Attributes, Color, Size);
     }
 
     /// <summary>
