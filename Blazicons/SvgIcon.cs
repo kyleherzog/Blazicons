@@ -8,9 +8,8 @@ namespace Blazicons;
 /// </summary>
 public sealed class SvgIcon : IEquatable<SvgIcon>
 {
-    private static readonly ReadOnlyDictionary<string, string> defaultAttributes = new(new Dictionary<string, string>()
+    private static readonly ReadOnlyDictionary<string, string?> defaultAttributes = new(new Dictionary<string, string?>()
     {
-        { "xmlns", "http://www.w3.org/2000/svg" },
         { "viewBox", "0 0 24 24" },
     });
 
@@ -20,11 +19,11 @@ public sealed class SvgIcon : IEquatable<SvgIcon>
     /// <param name="content">The markup content that is to reside between the SVG start and end tags.</param>
     /// <param name="viewBox">The value to be used for the viewbox attribute.</param>
     private SvgIcon(string content, string viewBox)
-        : this(content, new ReadOnlyDictionary<string, string>(new Dictionary<string, string> { { "xmlns", "http://www.w3.org/2000/svg" }, { "viewBox", viewBox } }))
+        : this(content, new ReadOnlyDictionary<string, string?>(new Dictionary<string, string?> { { "viewBox", viewBox } }))
     {
     }
 
-    private SvgIcon(string content, ReadOnlyDictionary<string, string> attributes)
+    private SvgIcon(string content, ReadOnlyDictionary<string, string?> attributes)
     {
         Content = content;
         Attributes = attributes;
@@ -33,7 +32,7 @@ public sealed class SvgIcon : IEquatable<SvgIcon>
     /// <summary>
     /// Gets the attributes to be applied to the root SVG element.
     /// </summary>
-    public ReadOnlyDictionary<string, string> Attributes { get; }
+    public ReadOnlyDictionary<string, string?> Attributes { get; }
 
     /// <summary>
     /// Gets or sets value to be applied to a the color CSS property.
@@ -74,7 +73,7 @@ public sealed class SvgIcon : IEquatable<SvgIcon>
     /// <summary>
     /// Gets the value to be used for the viewbox attribute of the SVG tag.
     /// </summary>
-    public string ViewBox { get => Attributes["viewBox"]; }
+    public string? ViewBox { get => Attributes["viewBox"]; }
 
     /// <summary>
     /// Creates an SVG icon from the specified markup content.
@@ -93,7 +92,7 @@ public sealed class SvgIcon : IEquatable<SvgIcon>
     /// <param name="content">The markup content that is to reside between the SVG start and end tags.</param>
     /// <param name="attributes">The values to use for the attributes on the SVG icon.</param>
     /// <returns>The newly created <see cref="SvgIcon"/> instance.</returns>
-    public static SvgIcon FromContent(string content, ReadOnlyDictionary<string, string>? attributes = null)
+    public static SvgIcon FromContent(string content, ReadOnlyDictionary<string, string?>? attributes = null)
     {
         attributes ??= defaultAttributes;
 
