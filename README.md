@@ -20,12 +20,14 @@ With Blazicons, an additional benifit is the ability to leverage intellisense.  
 ## Getting Started
 To get started using Blazicons, just install the Blazicons NuGet package of the desired icon library.  The following options are currently among those available.
 
-- Blazicons.Bootstrap
-- Blazicons.FluentUI
-- Blazicons.FontAwesome
-- Blazicons.GoogleMaterialDesign
-- Blazicons.Ionicons
-- Blazicons.MaterialDesignIcons
+- [Blazicons.Bootstrap](https://github.com/kyleherzog/Blazicons.Bootstrap)
+- [Blazicons.Devicon](https://github.com/kyleherzog/Blazicons.Devicon)
+- [Blazicons.FluentUI](https://github.com/kyleherzog/Blazicons.FluentUI)
+- [Blazicons.FontAwesome](https://github.com/kyleherzog/Blazicons.FontAwesome)
+- [Blazicons.GoogleMaterialDesign](https://github.com/kyleherzog/Blazicons.GoogleMaterialDesign)
+- [Blazicons.Ionicons](https://github.com/kyleherzog/Blazicons.Ionicons)
+- [Blazicons.Lucide](https://github.com/kyleherzog/Blazicons.Lucide)
+- [Blazicons.MaterialDesignIcons](https://github.com/kyleherzog/Blazicons.MaterialDesignIcons)
 
 Next add the Blazicons reference to the `_Imports.razor` file in the Blazor project.
 
