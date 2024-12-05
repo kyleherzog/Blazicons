@@ -1,8 +1,11 @@
 # Changelog
 These are the list of changes to each version that has been released.
 
+## 2.1
+- [x] Updated Microsoft.AspNetCore.Components.Web to v6.0.36
+
 ## 2.0
-- [x] Support for svg files that use stroke settings instead of fill
+- [x] Support for SVG files that use stroke settings instead of fill
 - [x] Updated Microsoft.AspNetCore.Components.Web to v6.0.29
 - [x] No longer setting default color via CSS
 

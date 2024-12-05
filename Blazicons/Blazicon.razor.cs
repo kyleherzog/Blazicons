@@ -53,17 +53,7 @@ public class Blazicon : BlaziconBase
         if (Svg is not null)
         {
             __builder.OpenElement(0, "svg");
-            for (var i = 0; i < Svg.Attributes.Count; i++)
-            {
-                var attribute = Svg.Attributes.ElementAt(i);
-                var value = attribute.Value;
-                if (value == string.Empty)
-                {
-                    value = null;
-                }
-
-                __builder.AddAttribute(i + 1, attribute.Key, value);
-            }
+            __builder.AddMultipleAttributes(1, Svg.Attributes.Select(x => new KeyValuePair<string, object>(x.Key, x.Value ?? string.Empty)));
 
             if (!string.IsNullOrEmpty(StyleAttribute))
             {
