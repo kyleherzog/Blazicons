@@ -1,0 +1,16 @@
+﻿[
+  {
+    "outputFile": "Styles/blazicons.css",
+    "inputFile": "Styles/blazicons.scss",
+    "minify": {
+      "enabled": false
+    }
+  },
+  {
+    "outputFile": "wwwroot/css/blazicons.min.css",
+    "inputFile": "Styles/blazicons.scss",
+    "minify": {
+      "enabled": true
+    }
+  }
+]

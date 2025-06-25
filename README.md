@@ -18,10 +18,13 @@ The first benefit is resource size. Blazicons is desinged to leverage the SVG ve
 With Blazicons, an additional benifit is the ability to leverage intellisense.  The various icons available in a given icon library are displayed with Visual Studio's intellisense options.
 
 ## Getting Started
+
+### Select a Library
 To get started using Blazicons, just install the Blazicons NuGet package of the desired icon library.  The following options are currently among those available.
 
 - [Blazicons.Bootstrap](https://github.com/kyleherzog/Blazicons.Bootstrap)
 - [Blazicons.Devicon](https://github.com/kyleherzog/Blazicons.Devicon)
+- [Blazicons.FlagIcons](https://github.com/kyleherzog/Blazicons.FlagIcons)
 - [Blazicons.FluentUI](https://github.com/kyleherzog/Blazicons.FluentUI)
 - [Blazicons.FontAwesome](https://github.com/kyleherzog/Blazicons.FontAwesome)
 - [Blazicons.GoogleMaterialDesign](https://github.com/kyleherzog/Blazicons.GoogleMaterialDesign)
@@ -29,17 +32,25 @@ To get started using Blazicons, just install the Blazicons NuGet package of the 
 - [Blazicons.Lucide](https://github.com/kyleherzog/Blazicons.Lucide)
 - [Blazicons.MaterialDesignIcons](https://github.com/kyleherzog/Blazicons.MaterialDesignIcons)
 
+### Add Import
 Next add the Blazicons reference to the `_Imports.razor` file in the Blazor project.
 
 ```csharp
 @using Blazicons
 ```
 
-Ensure that the project styles.css file is referenced in the head tag section of the index.html/_Host.cshtml file.
+### Add Styles
+There are two options for ensuring the Blazicons styles are available to the Blazor project.  Most Blazor applications support scoped CSS.  In these instances it is recommended to just ensure that the project styles.css file is referenced in the head tag section of the index.html/_Host.cshtml file.
 ```html
 <link href="My.App.styles.css" rel="stylesheet" />
 ```
 
+As an alternative, you can also reference the Blazicons styles directly in the index.html/_Host.cshtml file.
+```html
+<link href="_content/Blazicons/css/blazicons.min.css" rel="stylesheet" />
+```
+
+### Add a Blazicon
 Finally, add the Blazicon component to your Blazor pages/components.
 ```html
 <Blazicon Svg="MdiIcon.Information"></Blazicon>

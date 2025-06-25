@@ -24,6 +24,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +67,7 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+    <None Include="compilerconfig.json" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Base/BlaziconBase.razor.css" CssScope="blazicon" />
@@ -74,5 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <EditorConfigFiles Remove="C:\Repos\kyleherzog\Blazicons\Blazicons\.editorconfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Styles\" />
+    <Folder Include="wwwroot\css\" />
   </ItemGroup>
 </Project>
