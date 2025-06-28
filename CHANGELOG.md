@@ -1,9 +1,11 @@
 # Changelog
 These are the list of changes to each version that has been released.
 
+## 2.2
+- [x] Made _content/Blazicons/css/blazicons.min.css available
+
 ## 2.1
 - [x] Updated Microsoft.AspNetCore.Components.Web to v6.0.36
-- [x] Made _content/Blazicons/css/blazicons.min.css available
 
 ## 2.0
 - [x] Support for SVG files that use stroke settings instead of fill
