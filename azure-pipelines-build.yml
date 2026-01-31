@@ -1,0 +1,174 @@
+parameters:
+  - name: BuildConfiguration
+    displayName: Build Configuration
+    type: string
+    default: Release
+
+  - name: BuildTarget
+    type: string
+    default: '**/*.csproj'
+
+  - name: PackTarget
+    type: string
+    default: '**/*.csproj;!**/*Tests.csproj'
+    # Path to project(s) to pack
+
+variables:
+  BuildConfiguration: ${{ parameters.BuildConfiguration }}
+  PrimaryProjectFolder: Blazicons
+  BuildCounter: $[counter('Seed1', 0)]
+
+trigger:
+  branches:
+    include:
+    - refs/heads/master
+    - refs/heads/main
+  batch: True
+
+name: $(date:yyyyMMdd)$(rev:.r)
+
+jobs:
+- job: Build_Phase
+  displayName: Build Phase
+  cancelTimeoutInMinutes: 1
+  pool:
+    name: Local Web Team
+  steps:
+  - checkout: self
+    clean: true
+    fetchDepth: 1
+
+  - task: PowerShell@2
+    inputs:
+      targetType: inline
+      script: |
+        Write-Host "Branch: $env:BUILD_SOURCEBRANCHNAME"
+
+        if ($env:BUILD_SOURCEBRANCHNAME -eq "develop") {
+            Write-Output ("##vso[build.updatebuildnumber]" + $env:BUILD_BUILDNUMBER + "-beta")
+            Write-Host "Setting version as -beta"
+        }
+        elseif ($env:BUILD_SOURCEBRANCHNAME -ne "master" -and $env:BUILD_SOURCEBRANCHNAME -ne "main") {
+            Write-Output ("##vso[build.updatebuildnumber]" + $env:BUILD_BUILDNUMBER + "-alpha")
+            Write-Host "Setting version as -alpha"
+        }
+      pwsh: true
+    displayName: 'Set Quality Control Naming'
+
+  - task: mrtarantula.projectversiontools.versionintovariables.versionintovariables@1
+    displayName: 'Get Application Version as Variables'
+    inputs:
+      path: '$(PrimaryProjectFolder)\$(PrimaryProjectFolder).csproj'
+
+  - template: build/nuget-package.yml@as-templates
+    parameters:
+      BuildConfiguration: ${{ parameters.BuildConfiguration }}
+      BuildTarget: $(PrimaryProjectFolder).slnx
+      PackageVersion: $(Version.Major).$(Version.Minor).$(BuildCounter)
+
+  - task: NuGetToolInstaller@1
+    displayName: Use NuGet 7.x
+    inputs:
+      versionSpec: 7.x
+
+  - task: NuGetCommand@2
+    displayName: NuGet Restore
+    inputs:
+      command: restore
+      restoreSolution: ${{ parameters.BuildTarget }}
+      feedsToUse: config
+      externalFeedCredentials: 'Wells NuGet Server'
+
+  - task: richardfennellBM.BM-VSTS-Versioning-Task.Version-DotNetCoreAssemblies-Task.VersionDotNetCoreAssemblies@3
+    displayName: 'Version .NET Core Assemblies'
+    inputs:
+      VersionNumber: '$(Version.Major).$(Version.Minor).$(BuildCounter)'
+      VersionRegex: '\d+\.\d+\.\d+'
+
+  - task: DotNetCoreCLI@2
+    displayName: Build Projects
+    inputs:
+      command: build
+      projects: ${{ parameters.BuildTarget }}
+      arguments: >
+        --configuration ${{ parameters.BuildConfiguration }}
+        --no-restore
+
+  - task: mspremier.BuildQualityChecks.QualityChecks-task.BuildQualityChecks@10
+    displayName: Check build quality
+    inputs:
+      checkWarnings: true
+      warningFailOption: fixed
+      warningTaskFilters: '/^Build Projects/i'
+      includePartiallySucceeded: false
+
+  - task: DotNetCoreCLI@2
+    displayName: Run Tests
+    inputs:
+      command: 'test'
+      projects: |
+        !**/obj/**
+        **/*UnitTests.dll
+      arguments: '--configuration ${{ parameters.BuildConfiguration }} --no-build --logger trx'
+      publishTestResults: true
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet pack'
+    inputs:
+      command: pack
+      packagesToPack: ${{ parameters.PackTarget }}
+      packDirectory: '$(Build.ArtifactStagingDirectory)/release'
+      nobuild: true
+      versioningScheme: byEnvVar
+      includeSymbols: true
+      versionEnvVar: PACKAGE_VERSION
+    env:
+      PACKAGE_VERSION: ${{ parameters.PackageVersion }}
+    condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/main')))
+
+  - task: eliostruyf.build-task.custom-build-task.file-creator@7
+    displayName: 'File Creator'
+    inputs:
+      filepath: '$(build.artifactstagingdirectory)/VersionInformation.txt'
+      filecontent: '${{ parameters.PackageVersion }}'
+
+  - task: PowerShell@2
+    displayName: 'Determine prerelease version and directory'
+    inputs:
+      targetType: inline
+      script: |
+        $branch = "$(Build.SourceBranch)"
+        $baseVersion = "${{ parameters.PackageVersion }}"
+
+        if ($branch -eq "refs/heads/master" -or $branch -eq "refs/heads/main") {
+          $packageVersion = "$baseVersion-beta"
+          $packDirectory = "$(Build.ArtifactStagingDirectory)/beta"
+        } else {
+          $packageVersion = "$baseVersion-alpha"
+          $packDirectory = "$(Build.ArtifactStagingDirectory)/alpha"
+        }
+
+        Write-Host "##vso[task.setvariable variable=PrereleasePackageVersion]$packageVersion"
+        Write-Host "##vso[task.setvariable variable=PrereleasePackDirectory]$packDirectory"
+        Write-Host "Package Version: $packageVersion"
+        Write-Host "Pack Directory: $packDirectory"
+      pwsh: true
+    condition: succeeded()
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet pack - prerelease'
+    inputs:
+      command: pack
+      packagesToPack: ${{ parameters.PackTarget }}
+      packDirectory: '$(PrereleasePackDirectory)'
+      nobuild: true
+      versioningScheme: byEnvVar
+      versionEnvVar: PrereleasePackageVersion
+      includeSymbols: true
+    condition: succeeded()
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    condition: succeeded()
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)
