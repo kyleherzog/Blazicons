@@ -71,7 +71,6 @@ jobs:
       command: restore
       restoreSolution: ${{ parameters.BuildTarget }}
       feedsToUse: config
-      externalFeedCredentials: 'Wells NuGet Server'
 
   - task: richardfennellBM.BM-VSTS-Versioning-Task.Version-DotNetCoreAssemblies-Task.VersionDotNetCoreAssemblies@3
     displayName: 'Version .NET Core Assemblies'
