@@ -117,14 +117,14 @@ jobs:
       includeSymbols: true
       versionEnvVar: PACKAGE_VERSION
     env:
-      PACKAGE_VERSION: ${{ parameters.PackageVersion }}
+      PACKAGE_VERSION: '$(Version.Major).$(Version.Minor).$(BuildCounter)'
     condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/main')))
 
   - task: eliostruyf.build-task.custom-build-task.file-creator@7
     displayName: 'File Creator'
     inputs:
       filepath: '$(build.artifactstagingdirectory)/VersionInformation.txt'
-      filecontent: '${{ parameters.PackageVersion }}'
+      filecontent: '$(Version.Major).$(Version.Minor).$(BuildCounter)'
 
   - task: PowerShell@2
     displayName: 'Determine prerelease version and directory'
@@ -132,7 +132,7 @@ jobs:
       targetType: inline
       script: |
         $branch = "$(Build.SourceBranch)"
-        $baseVersion = "${{ parameters.PackageVersion }}"
+        $baseVersion = "$(Version.Major).$(Version.Minor).$(BuildCounter)"
 
         if ($branch -eq "refs/heads/master" -or $branch -eq "refs/heads/main") {
           $packageVersion = "$baseVersion-beta"
