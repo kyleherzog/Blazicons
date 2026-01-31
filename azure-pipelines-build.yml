@@ -21,9 +21,13 @@ variables:
 trigger:
   branches:
     include:
-    - refs/heads/master
     - refs/heads/main
   batch: True
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: refs/heads/main
 
 name: $(date:yyyyMMdd)$(rev:.r)
 
@@ -32,7 +36,7 @@ jobs:
   displayName: Build Phase
   cancelTimeoutInMinutes: 1
   pool:
-    name: Local Web Team
+    vmImage: windows-latest
   steps:
   - checkout: self
     clean: true
