@@ -60,12 +60,6 @@ jobs:
     inputs:
       path: '$(PrimaryProjectFolder)\$(PrimaryProjectFolder).csproj'
 
-  - template: build/nuget-package.yml@as-templates
-    parameters:
-      BuildConfiguration: ${{ parameters.BuildConfiguration }}
-      BuildTarget: $(PrimaryProjectFolder).slnx
-      PackageVersion: $(Version.Major).$(Version.Minor).$(BuildCounter)
-
   - task: NuGetToolInstaller@1
     displayName: Use NuGet 7.x
     inputs:
