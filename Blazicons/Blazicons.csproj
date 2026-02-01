@@ -86,13 +86,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Update="Base/BlaziconBase.razor.css" CssScope="blazicon" />
-    <None Update="blazicons-md-128.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <EditorConfigFiles Remove="C:\Repos\kyleherzog\Blazicons\Blazicons\.editorconfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="blazicons-md-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="blazicons-md-128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Styles\" />
