@@ -1,6 +1,9 @@
 # Changelog
 These are the list of changes to each version that has been released.
 
+## 3.0
+- [x] Added multi-targeting for .NET 8.0 and .NET 10.0
+
 ## 2.2
 - [x] Made _content/Blazicons/css/blazicons.min.css available
 

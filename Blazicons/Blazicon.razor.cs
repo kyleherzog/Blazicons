@@ -10,7 +10,7 @@ namespace Blazicons;
 /// </summary>
 public class Blazicon : BlaziconBase
 {
-    private Dictionary<string, string> lastKnownAttributes = new();
+    private Dictionary<string, string> lastKnownAttributes = [];
     private int? lastSvgHash;
 
     /// <summary>

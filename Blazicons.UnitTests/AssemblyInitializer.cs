@@ -1,7 +1,7 @@
 ﻿namespace Blazicons.UnitTests;
 
 [TestClass]
-public class AssemblyInitializer
+public static class AssemblyInitializer
 {
     [AssemblyInitialize]
     public static void AssemblyInitialize(TestContext context)

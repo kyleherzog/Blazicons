@@ -30,14 +30,14 @@ public class ComponentShould : VerifyBase
     [TestMethod]
     public Task RendersWithMergedStyles()
     {
-        using var context = new Bunit.TestContext();
+        using var context = new BunitContext();
         var icon = IconFactory.Alert;
         var attributes = new Dictionary<string, object>
         {
             { "style", "display: block;" },
         };
 
-        var component = context.RenderComponent<Blazicon>(parameters =>
+        var component = context.Render<Blazicon>(parameters =>
         {
             parameters.Add(p => p.Svg, icon.WithSize("150%"));
             parameters.Add(p => p.Attributes, attributes);
@@ -87,13 +87,13 @@ public class ComponentShould : VerifyBase
     [TestMethod]
     public Task RerenderGivenAttributeValueChanged()
     {
-        using var context = new Bunit.TestContext();
+        using var context = new BunitContext();
         var icon = IconFactory.Alert;
         var attributes = new Dictionary<string, object>
         {
             { "class", "hello" },
         };
-        var component = context.RenderComponent<Blazicon>(parameters =>
+        var component = context.Render<Blazicon>(parameters =>
         {
             parameters.Add(p => p.Svg, icon);
             parameters.Add(p => p.Attributes, attributes);
@@ -102,7 +102,7 @@ public class ComponentShould : VerifyBase
         var markup1 = component.Markup;
 
         attributes["class"] = "world";
-        component.SetParametersAndRender(parameters =>
+        component.Render(parameters =>
         {
             parameters.Add(p => p.Svg, icon);
         });
@@ -116,9 +116,9 @@ public class ComponentShould : VerifyBase
     [TestMethod]
     public Task RerenderGivenSvgContentChanged()
     {
-        using var context = new Bunit.TestContext();
+        using var context = new BunitContext();
         var icon = IconFactory.Alert;
-        var component = context.RenderComponent<Blazicon>(parameters =>
+        var component = context.Render<Blazicon>(parameters =>
         {
             parameters.Add(p => p.Svg, icon);
         });
@@ -126,7 +126,7 @@ public class ComponentShould : VerifyBase
         var markup1 = component.Markup;
 
         icon = IconFactory.AlertOutline;
-        component.SetParametersAndRender(parameters =>
+        component.Render(parameters =>
         {
             parameters.Add(p => p.Svg, icon);
         });

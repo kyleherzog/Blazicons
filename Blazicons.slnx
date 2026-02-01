@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="azure-pipelines-build.yml" />
+    <File Path="CHANGELOG.md" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Blazicons.UnitTests/Blazicons.UnitTests.csproj" />
+  <Project Path="Blazicons/Blazicons.csproj" />
+</Solution>
