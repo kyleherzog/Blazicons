@@ -10,9 +10,9 @@
     <Description>Provides support for displaying SVG based icons in Blazor projects.</Description>
     <PackageProjectUrl>https://github.com/kyleherzog/Blazicons</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kyleherzog/Blazicons</RepositoryUrl>
-    <ApplicationVersion>3.0</ApplicationVersion>
+    <ApplicationVersion>4.0</ApplicationVersion>
     <ApplicationRevision>0</ApplicationRevision>
-    <Version>3.0</Version>
+    <Version>4.0</Version>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Update="Base/BlaziconBase.razor.css" CssScope="blazicon" />
+    <None Update="BlaziconLayers.razor.css" CssScope="blazicon-layers" />
   </ItemGroup>
   <ItemGroup>
     <EditorConfigFiles Remove="C:\Repos\kyleherzog\Blazicons\Blazicons\.editorconfig" />

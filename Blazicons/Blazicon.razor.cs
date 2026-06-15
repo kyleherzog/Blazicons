@@ -42,6 +42,7 @@ public class Blazicon : BlaziconBase
             result.AddStyleFromAttributes(Attributes);
             result.AddStyle("color", Svg?.Color, !string.IsNullOrEmpty(Svg?.Color));
             result.AddStyle("font-size", Svg?.Size, !string.IsNullOrEmpty(Svg?.Size));
+            result.AddStyle("transform", Svg?.TransformStyle, !string.IsNullOrEmpty(Svg?.TransformStyle));
 
             return result.NullIfEmpty();
         }

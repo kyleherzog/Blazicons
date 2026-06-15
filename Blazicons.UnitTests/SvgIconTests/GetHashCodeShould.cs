@@ -61,4 +61,76 @@ public class GetHashCodeShould
 
         Assert.AreEqual(expected, result);
     }
+
+    [TestMethod]
+    public void ReturnDifferentHashGivenDifferentScaleFactor()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.Scale(1.5);
+
+        var expected = icon.GetHashCode();
+        var result = other.GetHashCode();
+
+        Assert.AreNotEqual(expected, result);
+    }
+
+    [TestMethod]
+    public void ReturnDifferentHashGivenDifferentRotation()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.Rotate(45);
+
+        var expected = icon.GetHashCode();
+        var result = other.GetHashCode();
+
+        Assert.AreNotEqual(expected, result);
+    }
+
+    [TestMethod]
+    public void ReturnDifferentHashGivenDifferentOffsetX()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.PushRight(2);
+
+        var expected = icon.GetHashCode();
+        var result = other.GetHashCode();
+
+        Assert.AreNotEqual(expected, result);
+    }
+
+    [TestMethod]
+    public void ReturnDifferentHashGivenDifferentOffsetY()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.PushDown(2);
+
+        var expected = icon.GetHashCode();
+        var result = other.GetHashCode();
+
+        Assert.AreNotEqual(expected, result);
+    }
+
+    [TestMethod]
+    public void ReturnDifferentHashGivenDifferentHorizontalFlip()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.FlipHorizontal();
+
+        var expected = icon.GetHashCode();
+        var result = other.GetHashCode();
+
+        Assert.AreNotEqual(expected, result);
+    }
+
+    [TestMethod]
+    public void ReturnDifferentHashGivenDifferentVerticalFlip()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.FlipVertical();
+
+        var expected = icon.GetHashCode();
+        var result = other.GetHashCode();
+
+        Assert.AreNotEqual(expected, result);
+    }
 }

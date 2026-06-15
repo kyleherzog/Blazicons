@@ -66,4 +66,70 @@ public class EqualsShould
 
         Assert.IsTrue(result);
     }
+
+    [TestMethod]
+    public void ReturnFalseGivenOtherIconWithDifferentScaleFactor()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.Scale(1.5);
+
+        var result = icon.Equals(other);
+
+        Assert.IsFalse(result);
+    }
+
+    [TestMethod]
+    public void ReturnFalseGivenOtherIconWithDifferentRotation()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.Rotate(45);
+
+        var result = icon.Equals(other);
+
+        Assert.IsFalse(result);
+    }
+
+    [TestMethod]
+    public void ReturnFalseGivenOtherIconWithDifferentOffsetX()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.PushRight(2);
+
+        var result = icon.Equals(other);
+
+        Assert.IsFalse(result);
+    }
+
+    [TestMethod]
+    public void ReturnFalseGivenOtherIconWithDifferentOffsetY()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.PushDown(2);
+
+        var result = icon.Equals(other);
+
+        Assert.IsFalse(result);
+    }
+
+    [TestMethod]
+    public void ReturnFalseGivenOtherIconWithDifferentHorizontalFlip()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.FlipHorizontal();
+
+        var result = icon.Equals(other);
+
+        Assert.IsFalse(result);
+    }
+
+    [TestMethod]
+    public void ReturnFalseGivenOtherIconWithDifferentVerticalFlip()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.FlipVertical();
+
+        var result = icon.Equals(other);
+
+        Assert.IsFalse(result);
+    }
 }
