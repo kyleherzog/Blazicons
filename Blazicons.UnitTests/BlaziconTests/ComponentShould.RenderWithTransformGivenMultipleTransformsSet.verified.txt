@@ -5,14 +5,14 @@
         viewBox: 0 0 24 24
       },
       Content: <path d="M13 14H11V9H13M13 18H11V16H13M1 21H23L12 2L1 21Z" />,
+      Markup: <svg viewBox='0 0 24 24'><path d="M13 14H11V9H13M13 18H11V16H13M1 21H23L12 2L1 21Z" /></svg>,
+      ViewBox: 0 0 24 24,
       IsFlippedHorizontal: true,
       IsFlippedVertical: false,
-      Markup: <svg viewBox='0 0 24 24'><path d="M13 14H11V9H13M13 18H11V16H13M1 21H23L12 2L1 21Z" /></svg>,
       OffsetX: 0.125,
       Rotation: 45.0,
       ScaleFactor: 1.5,
-      TransformStyle: translate(0.125em, 0em) scale(1.5) rotate(45deg) scaleX(-1),
-      ViewBox: 0 0 24 24
+      TransformStyle: translate(0.125em, 0em) scale(1.5) rotate(45deg) scaleX(-1)
     }
   }
 }

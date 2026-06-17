@@ -1,0 +1,15 @@
+span
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5em;
+    height: 1.5em;
+    border-radius: .75em;
+    padding: 0 .25em;
+    line-height: 1;
+    transform-origin: top right;
+}

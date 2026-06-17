@@ -1,0 +1,1 @@
+﻿<span style="font-size:0.5em;transform:scale(0.25);" blazicon-layers-counter>3</span>

@@ -11,21 +11,25 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="bunit" Version="2.5.3" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
-    <PackageReference Include="MSTest.TestAdapter" Version="4.0.2" />
-    <PackageReference Include="MSTest.TestFramework" Version="4.0.2" />
-    <PackageReference Include="coverlet.collector" Version="6.0.4">
+    <PackageReference Include="bunit" Version="2.7.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.6.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="4.2.3" />
+    <PackageReference Include="MSTest.TestFramework" Version="4.2.3" />
+    <PackageReference Include="coverlet.collector" Version="10.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Verify.Blazor" Version="11.0.0" />
-    <PackageReference Include="Verify.Bunit" Version="13.0.0" />
-    <PackageReference Include="Verify.MSTest" Version="31.10.0" />
+    <PackageReference Include="Verify.Bunit" Version="13.0.3" />
+    <PackageReference Include="Verify.MSTest" Version="31.19.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Blazicons\Blazicons.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="LayerTextTests\" />
   </ItemGroup>
 
 </Project>
