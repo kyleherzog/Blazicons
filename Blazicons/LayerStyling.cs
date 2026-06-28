@@ -55,7 +55,8 @@ public sealed class LayerStyling : BlaziconContentBase<LayerStyling>, IEquatable
             && OffsetX.EquatesTo(other.OffsetX)
             && OffsetY.EquatesTo(other.OffsetY)
             && IsFlippedHorizontal == other.IsFlippedHorizontal
-            && IsFlippedVertical == other.IsFlippedVertical;
+            && IsFlippedVertical == other.IsFlippedVertical
+            && Equals(Animation, other.Animation);
     }
 
     /// <inheritdoc/>
@@ -72,6 +73,7 @@ public sealed class LayerStyling : BlaziconContentBase<LayerStyling>, IEquatable
         hash.Add(OffsetY);
         hash.Add(IsFlippedHorizontal);
         hash.Add(IsFlippedVertical);
+        hash.Add(Animation);
         return hash.ToHashCode();
     }
 

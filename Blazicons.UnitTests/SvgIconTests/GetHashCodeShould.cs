@@ -133,4 +133,28 @@ public class GetHashCodeShould
 
         Assert.AreNotEqual(expected, result);
     }
+
+    [TestMethod]
+    public void ReturnDifferentHashGivenDifferentAnimation()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.Animate(BlaziconAnimation.Spin);
+
+        var expected = icon.GetHashCode();
+        var result = other.GetHashCode();
+
+        Assert.AreNotEqual(expected, result);
+    }
+
+    [TestMethod]
+    public void ReturnSameHashGivenSameAnimation()
+    {
+        var icon = IconFactory.Alert.Animate(BlaziconAnimation.Beat);
+        var other = IconFactory.Alert.Animate(BlaziconAnimation.Beat);
+
+        var expected = icon.GetHashCode();
+        var result = other.GetHashCode();
+
+        Assert.AreEqual(expected, result);
+    }
 }

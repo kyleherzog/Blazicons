@@ -244,4 +244,40 @@ public class ComponentShould : VerifyBase
         var output = Render.Component(template: template);
         return Verify(output);
     }
+
+    [TestMethod]
+    public Task RenderWithAnimationGivenBeatSet()
+    {
+        var template = new Blazicon
+        {
+            Svg = IconFactory.Alert.Animate(BlaziconAnimation.Beat),
+        };
+
+        var output = Render.Component(template: template);
+        return Verify(output);
+    }
+
+    [TestMethod]
+    public Task RenderWithAnimationGivenSpinSet()
+    {
+        var template = new Blazicon
+        {
+            Svg = IconFactory.Alert.Animate(BlaziconAnimation.Spin),
+        };
+
+        var output = Render.Component(template: template);
+        return Verify(output);
+    }
+
+    [TestMethod]
+    public Task RenderWithAnimationGivenBeatWithCustomDurationSet()
+    {
+        var template = new Blazicon
+        {
+            Svg = IconFactory.Alert.Animate(BlaziconAnimation.Beat.WithDuration(2000)),
+        };
+
+        var output = Render.Component(template: template);
+        return Verify(output);
+    }
 }

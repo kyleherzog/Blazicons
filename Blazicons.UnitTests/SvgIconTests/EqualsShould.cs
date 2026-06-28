@@ -132,4 +132,26 @@ public class EqualsShould
 
         Assert.IsFalse(result);
     }
+
+    [TestMethod]
+    public void ReturnFalseGivenOtherIconWithDifferentAnimation()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.Animate(BlaziconAnimation.Spin);
+
+        var result = icon.Equals(other);
+
+        Assert.IsFalse(result);
+    }
+
+    [TestMethod]
+    public void ReturnTrueGivenOtherIconWithSameAnimation()
+    {
+        var icon = IconFactory.Alert.Animate(BlaziconAnimation.Beat);
+        var other = IconFactory.Alert.Animate(BlaziconAnimation.Beat);
+
+        var result = icon.Equals(other);
+
+        Assert.IsTrue(result);
+    }
 }

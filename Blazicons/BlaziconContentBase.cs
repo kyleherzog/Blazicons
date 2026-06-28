@@ -10,6 +10,11 @@ public abstract class BlaziconContentBase<T>
     where T : BlaziconContentBase<T>
 {
     /// <summary>
+    /// Gets or sets the animation to be applied.
+    /// </summary>
+    public BlaziconAnimation? Animation { get; protected set; }
+
+    /// <summary>
     /// Gets or sets the value to be applied to the color CSS property.
     /// </summary>
     public string? Color { get; protected set; }
@@ -85,6 +90,17 @@ public abstract class BlaziconContentBase<T>
 
             return parts.Count > 0 ? string.Join(" ", parts) : null;
         }
+    }
+
+    /// <summary>
+    /// Applies the specified animation.
+    /// </summary>
+    /// <param name="animation">The animation to apply, or <c>null</c> to remove any existing animation.</param>
+    /// <returns>The current instance.</returns>
+    public T Animate(BlaziconAnimation? animation)
+    {
+        Animation = animation;
+        return (T)this;
     }
 
     /// <summary>

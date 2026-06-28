@@ -1,4 +1,5 @@
-﻿svg[blazicon] {
+﻿@charset "UTF-8";
+svg[blazicon] {
   width: 1em;
   height: 1em;
   vertical-align: -0.125em;
@@ -44,4 +45,171 @@ span[blazicon-layers-counter] {
   padding: 0 0.25em;
   line-height: 1;
   transform-origin: top right;
+}
+
+/* ── Animations ─────────────────────────────────────────────────────────── */
+svg[blazicon-beat] {
+  animation-name: blazicon-beat;
+  animation-duration: var(--blazicon-animation-duration, 1s);
+  animation-delay: var(--blazicon-animation-delay, 0s);
+  animation-direction: var(--blazicon-animation-direction, normal);
+  animation-iteration-count: var(--blazicon-animation-iteration-count, infinite);
+  animation-timing-function: var(--blazicon-animation-timing, ease-in-out);
+}
+
+@keyframes blazicon-beat {
+  0%, 90% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(var(--blazicon-beat-scale, 1.25));
+  }
+}
+svg[blazicon-fade] {
+  animation-name: blazicon-fade;
+  animation-duration: var(--blazicon-animation-duration, 1s);
+  animation-delay: var(--blazicon-animation-delay, 0s);
+  animation-direction: var(--blazicon-animation-direction, normal);
+  animation-iteration-count: var(--blazicon-animation-iteration-count, infinite);
+  animation-timing-function: var(--blazicon-animation-timing, ease-in-out);
+}
+
+@keyframes blazicon-fade {
+  50% {
+    opacity: var(--blazicon-fade-opacity, 0.4);
+  }
+}
+svg[blazicon-beat-fade] {
+  animation-name: blazicon-beat-fade;
+  animation-duration: var(--blazicon-animation-duration, 1s);
+  animation-delay: var(--blazicon-animation-delay, 0s);
+  animation-direction: var(--blazicon-animation-direction, normal);
+  animation-iteration-count: var(--blazicon-animation-iteration-count, infinite);
+  animation-timing-function: var(--blazicon-animation-timing, ease-in-out);
+}
+
+@keyframes blazicon-beat-fade {
+  50% {
+    opacity: var(--blazicon-beat-fade-opacity, 0.4);
+    transform: scale(var(--blazicon-beat-fade-scale, 0.75));
+  }
+}
+svg[blazicon-bounce] {
+  animation-name: blazicon-bounce;
+  animation-duration: var(--blazicon-animation-duration, 1s);
+  animation-delay: var(--blazicon-animation-delay, 0s);
+  animation-direction: var(--blazicon-animation-direction, normal);
+  animation-iteration-count: var(--blazicon-animation-iteration-count, infinite);
+  animation-timing-function: var(--blazicon-animation-timing, cubic-bezier(0.215, 0.61, 0.355, 1));
+}
+
+@keyframes blazicon-bounce {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  10% {
+    transform: scale(var(--blazicon-bounce-start-scale-x, 1.1), var(--blazicon-bounce-start-scale-y, 0.9)) translateY(0);
+  }
+  30% {
+    transform: scale(var(--blazicon-bounce-jump-scale-x, 0.9), var(--blazicon-bounce-jump-scale-y, 1.1)) translateY(var(--blazicon-bounce-height, -0.5em));
+  }
+  50% {
+    transform: scale(var(--blazicon-bounce-land-scale-x, 1.05), var(--blazicon-bounce-land-scale-y, 0.95)) translateY(0);
+  }
+  57% {
+    transform: scale(1) translateY(var(--blazicon-bounce-rebound, -0.125em));
+  }
+  64% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+svg[blazicon-flip] {
+  animation-name: blazicon-flip;
+  animation-duration: var(--blazicon-animation-duration, 1s);
+  animation-delay: var(--blazicon-animation-delay, 0s);
+  animation-direction: var(--blazicon-animation-direction, normal);
+  animation-iteration-count: var(--blazicon-animation-iteration-count, infinite);
+  animation-timing-function: var(--blazicon-animation-timing, ease-in-out);
+}
+
+@keyframes blazicon-flip {
+  50% {
+    transform: rotate3d(var(--blazicon-flip-x, 0), var(--blazicon-flip-y, 1), var(--blazicon-flip-z, 0), var(--blazicon-flip-angle, 180deg));
+  }
+}
+svg[blazicon-shake] {
+  animation-name: blazicon-shake;
+  animation-duration: var(--blazicon-animation-duration, 1s);
+  animation-delay: var(--blazicon-animation-delay, 0s);
+  animation-direction: var(--blazicon-animation-direction, normal);
+  animation-iteration-count: var(--blazicon-animation-iteration-count, infinite);
+  animation-timing-function: var(--blazicon-animation-timing, ease-in-out);
+}
+
+@keyframes blazicon-shake {
+  0% {
+    transform: rotate(-3deg);
+  }
+  12.5% {
+    transform: rotate(3deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  37.5% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+  62.5% {
+    transform: rotate(3deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+  87.5% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(-3deg);
+  }
+}
+svg[blazicon-spin] {
+  animation-name: blazicon-spin;
+  animation-duration: var(--blazicon-animation-duration, 2s);
+  animation-delay: var(--blazicon-animation-delay, 0s);
+  animation-direction: var(--blazicon-animation-direction, normal);
+  animation-iteration-count: var(--blazicon-animation-iteration-count, infinite);
+  animation-timing-function: var(--blazicon-animation-timing, linear);
+}
+
+svg[blazicon-spin-pulse] {
+  animation-name: blazicon-spin;
+  animation-duration: var(--blazicon-animation-duration, 1s);
+  animation-delay: var(--blazicon-animation-delay, 0s);
+  animation-direction: var(--blazicon-animation-direction, normal);
+  animation-iteration-count: var(--blazicon-animation-iteration-count, infinite);
+  animation-timing-function: var(--blazicon-animation-timing, steps(8));
+}
+
+svg[blazicon-spin-reverse] {
+  animation-name: blazicon-spin;
+  animation-duration: var(--blazicon-animation-duration, 2s);
+  animation-delay: var(--blazicon-animation-delay, 0s);
+  animation-direction: var(--blazicon-animation-direction, reverse);
+  animation-iteration-count: var(--blazicon-animation-iteration-count, infinite);
+  animation-timing-function: var(--blazicon-animation-timing, linear);
+}
+
+@keyframes blazicon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
