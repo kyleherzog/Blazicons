@@ -1,4 +1,4 @@
-﻿namespace Blazicons.Extensions;
+﻿namespace Blazicons;
 
 internal static class BlaziconAnimationDirectionExtensions
 {
