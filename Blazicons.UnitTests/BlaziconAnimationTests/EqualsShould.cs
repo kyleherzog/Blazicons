@@ -4,26 +4,6 @@ namespace Blazicons.UnitTests.BlaziconAnimationTests;
 public class EqualsShould
 {
     [TestMethod]
-    public void ReturnFalseGivenNull()
-    {
-        var animation = BlaziconAnimation.Beat;
-
-        var result = animation.Equals(null);
-
-        Assert.IsFalse(result);
-    }
-
-    [TestMethod]
-    public void ReturnFalseGivenOtherType()
-    {
-        var animation = BlaziconAnimation.Beat;
-
-        var result = animation.Equals(new object());
-
-        Assert.IsFalse(result);
-    }
-
-    [TestMethod]
     public void ReturnFalseGivenDifferentAnimationType()
     {
         var animation = BlaziconAnimation.Beat;
@@ -35,21 +15,10 @@ public class EqualsShould
     }
 
     [TestMethod]
-    public void ReturnTrueGivenSameAnimationType()
+    public void ReturnFalseGivenDifferentBeatScale()
     {
         var animation = BlaziconAnimation.Beat;
-        var other = BlaziconAnimation.Beat;
-
-        var result = animation.Equals(other);
-
-        Assert.IsTrue(result);
-    }
-
-    [TestMethod]
-    public void ReturnFalseGivenDifferentDuration()
-    {
-        var animation = BlaziconAnimation.Beat;
-        var other = BlaziconAnimation.Beat.WithDuration(2000);
+        var other = BlaziconAnimation.Beat.WithBeatScale(1.5);
 
         var result = animation.Equals(other);
 
@@ -79,32 +48,10 @@ public class EqualsShould
     }
 
     [TestMethod]
-    public void ReturnFalseGivenDifferentIterationCount()
+    public void ReturnFalseGivenDifferentDuration()
     {
         var animation = BlaziconAnimation.Beat;
-        var other = BlaziconAnimation.Beat.WithIterationCount("3");
-
-        var result = animation.Equals(other);
-
-        Assert.IsFalse(result);
-    }
-
-    [TestMethod]
-    public void ReturnFalseGivenDifferentTimingFunction()
-    {
-        var animation = BlaziconAnimation.Beat;
-        var other = BlaziconAnimation.Beat.WithTimingFunction("linear");
-
-        var result = animation.Equals(other);
-
-        Assert.IsFalse(result);
-    }
-
-    [TestMethod]
-    public void ReturnFalseGivenDifferentBeatScale()
-    {
-        var animation = BlaziconAnimation.Beat;
-        var other = BlaziconAnimation.Beat.WithBeatScale(1.5);
+        var other = BlaziconAnimation.Beat.WithDuration(2000);
 
         var result = animation.Equals(other);
 
@@ -131,6 +78,59 @@ public class EqualsShould
         var result = animation.Equals(other);
 
         Assert.IsFalse(result);
+    }
+
+    [TestMethod]
+    public void ReturnFalseGivenDifferentIterationCount()
+    {
+        var animation = BlaziconAnimation.Beat;
+        var other = BlaziconAnimation.Beat.WithIterationCount("3");
+
+        var result = animation.Equals(other);
+
+        Assert.IsFalse(result);
+    }
+
+    [TestMethod]
+    public void ReturnFalseGivenDifferentTimingFunction()
+    {
+        var animation = BlaziconAnimation.Beat;
+        var other = BlaziconAnimation.Beat.WithTimingFunction("linear");
+
+        var result = animation.Equals(other);
+
+        Assert.IsFalse(result);
+    }
+
+    [TestMethod]
+    public void ReturnFalseGivenNull()
+    {
+        var animation = BlaziconAnimation.Beat;
+
+        var result = animation.Equals(null);
+
+        Assert.IsFalse(result);
+    }
+
+    [TestMethod]
+    public void ReturnFalseGivenOtherType()
+    {
+        var animation = BlaziconAnimation.Beat;
+
+        var result = animation.Equals(new object());
+
+        Assert.IsFalse(result);
+    }
+
+    [TestMethod]
+    public void ReturnTrueGivenSameAnimationType()
+    {
+        var animation = BlaziconAnimation.Beat;
+        var other = BlaziconAnimation.Beat;
+
+        var result = animation.Equals(other);
+
+        Assert.IsTrue(result);
     }
 
     [TestMethod]

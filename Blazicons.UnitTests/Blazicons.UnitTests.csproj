@@ -28,8 +28,4 @@
     <ProjectReference Include="..\Blazicons\Blazicons.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="LayerTextTests\" />
-  </ItemGroup>
-
 </Project>

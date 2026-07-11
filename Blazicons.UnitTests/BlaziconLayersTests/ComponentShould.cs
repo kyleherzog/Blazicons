@@ -17,43 +17,6 @@ public class ComponentShould : VerifyBase
     }
 
     [TestMethod]
-    public Task RenderWithOneLayerGivenOneChildIcon()
-    {
-        using var context = new BunitContext();
-        var component = context.Render<BlaziconLayers>(parameters =>
-        {
-            parameters.Add(p => p.ChildContent, (RenderFragment)(builder =>
-            {
-                builder.OpenComponent<Blazicon>(0);
-                builder.AddAttribute(1, nameof(Blazicon.Svg), IconFactory.Alert);
-                builder.CloseComponent();
-            }));
-        });
-
-        return Verify(component.Markup);
-    }
-
-    [TestMethod]
-    public Task RenderWithTwoLayersGivenTwoChildIcons()
-    {
-        using var context = new BunitContext();
-        var component = context.Render<BlaziconLayers>(parameters =>
-        {
-            parameters.Add(p => p.ChildContent, (RenderFragment)(builder =>
-            {
-                builder.OpenComponent<Blazicon>(0);
-                builder.AddAttribute(1, nameof(Blazicon.Svg), IconFactory.Alert);
-                builder.CloseComponent();
-                builder.OpenComponent<Blazicon>(2);
-                builder.AddAttribute(3, nameof(Blazicon.Svg), IconFactory.AlertOutline);
-                builder.CloseComponent();
-            }));
-        });
-
-        return Verify(component.Markup);
-    }
-
-    [TestMethod]
     public Task RendersWithClassAttributeGivenClassSet()
     {
         using var context = new BunitContext();
@@ -92,6 +55,43 @@ public class ComponentShould : VerifyBase
             {
                 builder.OpenComponent<Blazicon>(0);
                 builder.AddAttribute(1, nameof(Blazicon.Svg), IconFactory.Alert);
+                builder.CloseComponent();
+            }));
+        });
+
+        return Verify(component.Markup);
+    }
+
+    [TestMethod]
+    public Task RenderWithOneLayerGivenOneChildIcon()
+    {
+        using var context = new BunitContext();
+        var component = context.Render<BlaziconLayers>(parameters =>
+        {
+            parameters.Add(p => p.ChildContent, (RenderFragment)(builder =>
+            {
+                builder.OpenComponent<Blazicon>(0);
+                builder.AddAttribute(1, nameof(Blazicon.Svg), IconFactory.Alert);
+                builder.CloseComponent();
+            }));
+        });
+
+        return Verify(component.Markup);
+    }
+
+    [TestMethod]
+    public Task RenderWithTwoLayersGivenTwoChildIcons()
+    {
+        using var context = new BunitContext();
+        var component = context.Render<BlaziconLayers>(parameters =>
+        {
+            parameters.Add(p => p.ChildContent, (RenderFragment)(builder =>
+            {
+                builder.OpenComponent<Blazicon>(0);
+                builder.AddAttribute(1, nameof(Blazicon.Svg), IconFactory.Alert);
+                builder.CloseComponent();
+                builder.OpenComponent<Blazicon>(2);
+                builder.AddAttribute(3, nameof(Blazicon.Svg), IconFactory.AlertOutline);
                 builder.CloseComponent();
             }));
         });

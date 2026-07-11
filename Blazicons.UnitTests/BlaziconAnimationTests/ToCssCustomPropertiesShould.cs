@@ -4,33 +4,53 @@ namespace Blazicons.UnitTests.BlaziconAnimationTests;
 public class ToCssCustomPropertiesShould
 {
     [TestMethod]
-    public void ReturnEmptyGivenNoCustomization()
+    public void ReturnBeatFadeOpacityGivenBeatFadeOpacitySet()
     {
-        var animation = BlaziconAnimation.Beat;
+        var animation = BlaziconAnimation.BeatFade.WithBeatFadeOpacity(0.3);
 
         var result = animation.ToCssCustomProperties();
 
-        Assert.AreEqual(0, result.Count);
+        Assert.AreEqual("0.3", result["--blazicon-beat-fade-opacity"]);
     }
 
     [TestMethod]
-    public void ReturnDurationInMillisecondsGivenDurationSet()
+    public void ReturnBeatFadeScaleGivenBeatFadeScaleSet()
     {
-        var animation = BlaziconAnimation.Beat.WithDuration(1500);
+        var animation = BlaziconAnimation.BeatFade.WithBeatFadeScale(0.8);
 
         var result = animation.ToCssCustomProperties();
 
-        Assert.AreEqual("1500ms", result["--blazicon-animation-duration"]);
+        Assert.AreEqual("0.8", result["--blazicon-beat-fade-scale"]);
     }
 
     [TestMethod]
-    public void ReturnDurationInMillisecondsGivenDurationSetAsTimeSpan()
+    public void ReturnBeatScaleGivenBeatScaleSet()
     {
-        var animation = BlaziconAnimation.Beat.WithDuration(TimeSpan.FromSeconds(2));
+        var animation = BlaziconAnimation.Beat.WithBeatScale(1.5);
 
         var result = animation.ToCssCustomProperties();
 
-        Assert.AreEqual("2000ms", result["--blazicon-animation-duration"]);
+        Assert.AreEqual("1.5", result["--blazicon-beat-scale"]);
+    }
+
+    [TestMethod]
+    public void ReturnBounceHeightWithEmUnitsGivenBounceHeightSet()
+    {
+        var animation = BlaziconAnimation.Bounce.WithBounceHeight(-0.5);
+
+        var result = animation.ToCssCustomProperties();
+
+        Assert.AreEqual("-0.5em", result["--blazicon-bounce-height"]);
+    }
+
+    [TestMethod]
+    public void ReturnBounceReboundWithEmUnitsGivenBounceReboundSet()
+    {
+        var animation = BlaziconAnimation.Bounce.WithBounceRebound(-0.125);
+
+        var result = animation.ToCssCustomProperties();
+
+        Assert.AreEqual("-0.125em", result["--blazicon-bounce-rebound"]);
     }
 
     [TestMethod]
@@ -54,16 +74,6 @@ public class ToCssCustomPropertiesShould
     }
 
     [TestMethod]
-    public void ReturnDirectionGivenDirectionSet()
-    {
-        var animation = BlaziconAnimation.Beat.WithDirection(BlaziconAnimationDirection.Reverse);
-
-        var result = animation.ToCssCustomProperties();
-
-        Assert.AreEqual("reverse", result["--blazicon-animation-direction"]);
-    }
-
-    [TestMethod]
     public void ReturnDirectionAlternateGivenDirectionSetToAlternate()
     {
         var animation = BlaziconAnimation.Beat.WithDirection(BlaziconAnimationDirection.Alternate);
@@ -84,33 +94,43 @@ public class ToCssCustomPropertiesShould
     }
 
     [TestMethod]
-    public void ReturnIterationCountGivenIterationCountSet()
+    public void ReturnDirectionGivenDirectionSet()
     {
-        var animation = BlaziconAnimation.Beat.WithIterationCount("3");
+        var animation = BlaziconAnimation.Beat.WithDirection(BlaziconAnimationDirection.Reverse);
 
         var result = animation.ToCssCustomProperties();
 
-        Assert.AreEqual("3", result["--blazicon-animation-iteration-count"]);
+        Assert.AreEqual("reverse", result["--blazicon-animation-direction"]);
     }
 
     [TestMethod]
-    public void ReturnTimingFunctionGivenTimingFunctionSet()
+    public void ReturnDurationInMillisecondsGivenDurationSet()
     {
-        var animation = BlaziconAnimation.Beat.WithTimingFunction("linear");
+        var animation = BlaziconAnimation.Beat.WithDuration(1500);
 
         var result = animation.ToCssCustomProperties();
 
-        Assert.AreEqual("linear", result["--blazicon-animation-timing"]);
+        Assert.AreEqual("1500ms", result["--blazicon-animation-duration"]);
     }
 
     [TestMethod]
-    public void ReturnBeatScaleGivenBeatScaleSet()
+    public void ReturnDurationInMillisecondsGivenDurationSetAsTimeSpan()
     {
-        var animation = BlaziconAnimation.Beat.WithBeatScale(1.5);
+        var animation = BlaziconAnimation.Beat.WithDuration(TimeSpan.FromSeconds(2));
 
         var result = animation.ToCssCustomProperties();
 
-        Assert.AreEqual("1.5", result["--blazicon-beat-scale"]);
+        Assert.AreEqual("2000ms", result["--blazicon-animation-duration"]);
+    }
+
+    [TestMethod]
+    public void ReturnEmptyGivenNoCustomization()
+    {
+        var animation = BlaziconAnimation.Beat;
+
+        var result = animation.ToCssCustomProperties();
+
+        Assert.AreEqual(0, result.Count);
     }
 
     [TestMethod]
@@ -121,46 +141,6 @@ public class ToCssCustomPropertiesShould
         var result = animation.ToCssCustomProperties();
 
         Assert.AreEqual("0.2", result["--blazicon-fade-opacity"]);
-    }
-
-    [TestMethod]
-    public void ReturnBeatFadeOpacityGivenBeatFadeOpacitySet()
-    {
-        var animation = BlaziconAnimation.BeatFade.WithBeatFadeOpacity(0.3);
-
-        var result = animation.ToCssCustomProperties();
-
-        Assert.AreEqual("0.3", result["--blazicon-beat-fade-opacity"]);
-    }
-
-    [TestMethod]
-    public void ReturnBeatFadeScaleGivenBeatFadeScaleSet()
-    {
-        var animation = BlaziconAnimation.BeatFade.WithBeatFadeScale(0.8);
-
-        var result = animation.ToCssCustomProperties();
-
-        Assert.AreEqual("0.8", result["--blazicon-beat-fade-scale"]);
-    }
-
-    [TestMethod]
-    public void ReturnBounceHeightWithEmUnitsGivenBounceHeightSet()
-    {
-        var animation = BlaziconAnimation.Bounce.WithBounceHeight(-0.5);
-
-        var result = animation.ToCssCustomProperties();
-
-        Assert.AreEqual("-0.5em", result["--blazicon-bounce-height"]);
-    }
-
-    [TestMethod]
-    public void ReturnBounceReboundWithEmUnitsGivenBounceReboundSet()
-    {
-        var animation = BlaziconAnimation.Bounce.WithBounceRebound(-0.125);
-
-        var result = animation.ToCssCustomProperties();
-
-        Assert.AreEqual("-0.125em", result["--blazicon-bounce-rebound"]);
     }
 
     [TestMethod]
@@ -204,6 +184,16 @@ public class ToCssCustomPropertiesShould
     }
 
     [TestMethod]
+    public void ReturnIterationCountGivenIterationCountSet()
+    {
+        var animation = BlaziconAnimation.Beat.WithIterationCount("3");
+
+        var result = animation.ToCssCustomProperties();
+
+        Assert.AreEqual("3", result["--blazicon-animation-iteration-count"]);
+    }
+
+    [TestMethod]
     public void ReturnOnlySetPropertiesGivenPartialCustomization()
     {
         var animation = BlaziconAnimation.Beat.WithDuration(2000);
@@ -212,5 +202,15 @@ public class ToCssCustomPropertiesShould
 
         Assert.AreEqual(1, result.Count);
         Assert.IsTrue(result.ContainsKey("--blazicon-animation-duration"));
+    }
+
+    [TestMethod]
+    public void ReturnTimingFunctionGivenTimingFunctionSet()
+    {
+        var animation = BlaziconAnimation.Beat.WithTimingFunction("linear");
+
+        var result = animation.ToCssCustomProperties();
+
+        Assert.AreEqual("linear", result["--blazicon-animation-timing"]);
     }
 }
