@@ -4,6 +4,18 @@
 public class GetHashCodeShould
 {
     [TestMethod]
+    public void ReturnDifferentHashGivenDifferentAnimation()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.Animate(BlaziconAnimation.Spin);
+
+        var expected = icon.GetHashCode();
+        var result = other.GetHashCode();
+
+        Assert.AreNotEqual(expected, result);
+    }
+
+    [TestMethod]
     public void ReturnDifferentHashGivenDifferentColoring()
     {
         var icon = IconFactory.Alert;
@@ -28,57 +40,10 @@ public class GetHashCodeShould
     }
 
     [TestMethod]
-    public void ReturnDifferentHashGivenDifferentSizing()
+    public void ReturnDifferentHashGivenDifferentHorizontalFlip()
     {
         var icon = IconFactory.Alert;
-        var other = IconFactory.Alert.WithSize("200%");
-
-        var expected = icon.GetHashCode();
-        var result = other.GetHashCode();
-
-        Assert.AreNotEqual(expected, result);
-    }
-
-    [TestMethod]
-    public void ReturnSameHashGivenSameContent()
-    {
-        var icon = IconFactory.Alert;
-        var other = IconFactory.Alert;
-
-        var expected = icon.GetHashCode();
-        var result = other.GetHashCode();
-
-        Assert.AreEqual(expected, result);
-    }
-
-    [TestMethod]
-    public void ReturnSameHashGivenSameInstance()
-    {
-        var icon = IconFactory.Alert;
-
-        var expected = icon.GetHashCode();
-        var result = icon.GetHashCode();
-
-        Assert.AreEqual(expected, result);
-    }
-
-    [TestMethod]
-    public void ReturnDifferentHashGivenDifferentScaleFactor()
-    {
-        var icon = IconFactory.Alert;
-        var other = IconFactory.Alert.Scale(1.5);
-
-        var expected = icon.GetHashCode();
-        var result = other.GetHashCode();
-
-        Assert.AreNotEqual(expected, result);
-    }
-
-    [TestMethod]
-    public void ReturnDifferentHashGivenDifferentRotation()
-    {
-        var icon = IconFactory.Alert;
-        var other = IconFactory.Alert.Rotate(45);
+        var other = IconFactory.Alert.FlipHorizontal();
 
         var expected = icon.GetHashCode();
         var result = other.GetHashCode();
@@ -111,10 +76,34 @@ public class GetHashCodeShould
     }
 
     [TestMethod]
-    public void ReturnDifferentHashGivenDifferentHorizontalFlip()
+    public void ReturnDifferentHashGivenDifferentRotation()
     {
         var icon = IconFactory.Alert;
-        var other = IconFactory.Alert.FlipHorizontal();
+        var other = IconFactory.Alert.Rotate(45);
+
+        var expected = icon.GetHashCode();
+        var result = other.GetHashCode();
+
+        Assert.AreNotEqual(expected, result);
+    }
+
+    [TestMethod]
+    public void ReturnDifferentHashGivenDifferentScaleFactor()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.Scale(1.5);
+
+        var expected = icon.GetHashCode();
+        var result = other.GetHashCode();
+
+        Assert.AreNotEqual(expected, result);
+    }
+
+    [TestMethod]
+    public void ReturnDifferentHashGivenDifferentSizing()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.WithSize("200%");
 
         var expected = icon.GetHashCode();
         var result = other.GetHashCode();
@@ -135,18 +124,6 @@ public class GetHashCodeShould
     }
 
     [TestMethod]
-    public void ReturnDifferentHashGivenDifferentAnimation()
-    {
-        var icon = IconFactory.Alert;
-        var other = IconFactory.Alert.Animate(BlaziconAnimation.Spin);
-
-        var expected = icon.GetHashCode();
-        var result = other.GetHashCode();
-
-        Assert.AreNotEqual(expected, result);
-    }
-
-    [TestMethod]
     public void ReturnSameHashGivenSameAnimation()
     {
         var icon = IconFactory.Alert.Animate(BlaziconAnimation.Beat);
@@ -154,6 +131,29 @@ public class GetHashCodeShould
 
         var expected = icon.GetHashCode();
         var result = other.GetHashCode();
+
+        Assert.AreEqual(expected, result);
+    }
+
+    [TestMethod]
+    public void ReturnSameHashGivenSameContent()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert;
+
+        var expected = icon.GetHashCode();
+        var result = other.GetHashCode();
+
+        Assert.AreEqual(expected, result);
+    }
+
+    [TestMethod]
+    public void ReturnSameHashGivenSameInstance()
+    {
+        var icon = IconFactory.Alert;
+
+        var expected = icon.GetHashCode();
+        var result = icon.GetHashCode();
 
         Assert.AreEqual(expected, result);
     }

@@ -4,16 +4,6 @@ namespace Blazicons.UnitTests.SvgIconTests;
 public class FlipVerticalShould
 {
     [TestMethod]
-    public void SetIsFlippedVerticalTrueGivenCalledWithNoArgs()
-    {
-        var icon = IconFactory.Alert;
-
-        icon.FlipVertical();
-
-        Assert.IsTrue(icon.IsFlippedVertical);
-    }
-
-    [TestMethod]
     public void SetIsFlippedVerticalGivenCalledWithFalse()
     {
         var icon = IconFactory.Alert;
@@ -22,5 +12,15 @@ public class FlipVerticalShould
         icon.FlipVertical(false);
 
         Assert.IsFalse(icon.IsFlippedVertical);
+    }
+
+    [TestMethod]
+    public void SetIsFlippedVerticalTrueGivenCalledWithNoArgs()
+    {
+        var icon = IconFactory.Alert;
+
+        icon.FlipVertical();
+
+        Assert.IsTrue(icon.IsFlippedVertical);
     }
 }

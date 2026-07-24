@@ -14,6 +14,17 @@ public class EqualsShould
     }
 
     [TestMethod]
+    public void ReturnFalseGivenOtherIconWithDifferentAnimation()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.Animate(BlaziconAnimation.Spin);
+
+        var result = icon.Equals(other);
+
+        Assert.IsFalse(result);
+    }
+
+    [TestMethod]
     public void ReturnFalseGivenOtherIconWithDifferentColoring()
     {
         var icon = IconFactory.Alert;
@@ -36,53 +47,10 @@ public class EqualsShould
     }
 
     [TestMethod]
-    public void ReturnFalseGivenOtherIconWithDifferentSizing()
+    public void ReturnFalseGivenOtherIconWithDifferentHorizontalFlip()
     {
         var icon = IconFactory.Alert;
-        var other = IconFactory.Alert.WithSize("200%");
-
-        var result = icon.Equals(other);
-
-        Assert.IsFalse(result);
-    }
-
-    [TestMethod]
-    public void ReturnFalseGivenOtherType()
-    {
-        var icon = IconFactory.Alert;
-
-        var result = icon.Equals(new object());
-
-        Assert.IsFalse(result);
-    }
-
-    [TestMethod]
-    public void ReturnTrueGivenOtherIconWithSameContent()
-    {
-        var icon = IconFactory.Alert;
-        var other = IconFactory.Alert;
-
-        var result = icon.Equals(other);
-
-        Assert.IsTrue(result);
-    }
-
-    [TestMethod]
-    public void ReturnFalseGivenOtherIconWithDifferentScaleFactor()
-    {
-        var icon = IconFactory.Alert;
-        var other = IconFactory.Alert.Scale(1.5);
-
-        var result = icon.Equals(other);
-
-        Assert.IsFalse(result);
-    }
-
-    [TestMethod]
-    public void ReturnFalseGivenOtherIconWithDifferentRotation()
-    {
-        var icon = IconFactory.Alert;
-        var other = IconFactory.Alert.Rotate(45);
+        var other = IconFactory.Alert.FlipHorizontal();
 
         var result = icon.Equals(other);
 
@@ -112,10 +80,32 @@ public class EqualsShould
     }
 
     [TestMethod]
-    public void ReturnFalseGivenOtherIconWithDifferentHorizontalFlip()
+    public void ReturnFalseGivenOtherIconWithDifferentRotation()
     {
         var icon = IconFactory.Alert;
-        var other = IconFactory.Alert.FlipHorizontal();
+        var other = IconFactory.Alert.Rotate(45);
+
+        var result = icon.Equals(other);
+
+        Assert.IsFalse(result);
+    }
+
+    [TestMethod]
+    public void ReturnFalseGivenOtherIconWithDifferentScaleFactor()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.Scale(1.5);
+
+        var result = icon.Equals(other);
+
+        Assert.IsFalse(result);
+    }
+
+    [TestMethod]
+    public void ReturnFalseGivenOtherIconWithDifferentSizing()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert.WithSize("200%");
 
         var result = icon.Equals(other);
 
@@ -134,12 +124,11 @@ public class EqualsShould
     }
 
     [TestMethod]
-    public void ReturnFalseGivenOtherIconWithDifferentAnimation()
+    public void ReturnFalseGivenOtherType()
     {
         var icon = IconFactory.Alert;
-        var other = IconFactory.Alert.Animate(BlaziconAnimation.Spin);
 
-        var result = icon.Equals(other);
+        var result = icon.Equals(new object());
 
         Assert.IsFalse(result);
     }
@@ -149,6 +138,17 @@ public class EqualsShould
     {
         var icon = IconFactory.Alert.Animate(BlaziconAnimation.Beat);
         var other = IconFactory.Alert.Animate(BlaziconAnimation.Beat);
+
+        var result = icon.Equals(other);
+
+        Assert.IsTrue(result);
+    }
+
+    [TestMethod]
+    public void ReturnTrueGivenOtherIconWithSameContent()
+    {
+        var icon = IconFactory.Alert;
+        var other = IconFactory.Alert;
 
         var result = icon.Equals(other);
 
