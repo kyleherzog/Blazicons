@@ -130,7 +130,7 @@ public class ToCssCustomPropertiesShould
 
         var result = animation.ToCssCustomProperties();
 
-        Assert.AreEqual(0, result.Count);
+        Assert.IsEmpty(result);
     }
 
     [TestMethod]
@@ -200,7 +200,7 @@ public class ToCssCustomPropertiesShould
 
         var result = animation.ToCssCustomProperties();
 
-        Assert.AreEqual(1, result.Count);
+        Assert.HasCount(1, result);
         Assert.IsTrue(result.ContainsKey("--blazicon-animation-duration"));
     }
 

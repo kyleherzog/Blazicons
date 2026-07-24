@@ -4,6 +4,7 @@ These are the list of changes to each version that has been released.
 ## 4.0
 - [x] Added `BlaziconLayers` component to allow layering of icons
 - [x] Added scale, positioning, and rotation transformation helper methods
+- [x] Updated Microsoft.AspNetCore.Components.Web to v10.0.10/8.0.29
 
 ## 3.0
 - [x] Added multi-targeting for .NET 8.0 and .NET 10.0

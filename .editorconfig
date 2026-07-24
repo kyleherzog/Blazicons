@@ -344,3 +344,7 @@ dotnet_diagnostic.VSSpell001.severity = suggestion
 
 # VSTHRD200: Use "Async" suffix for async methods
 dotnet_diagnostic.VSTHRD200.severity = none
+
+[*.md]
+md_blanks_around_headings = false
+md_blanks_around_lists = false

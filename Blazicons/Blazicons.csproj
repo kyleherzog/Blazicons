@@ -32,19 +32,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BlazorComponentUtilities" Version="1.8.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Analyzers" Version="10.0.9">
+    <PackageReference Include="Microsoft.AspNetCore.Components.Analyzers" Version="10.0.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.301">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.302">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.300">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.301">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.14.15">
+    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="18.7.23">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -52,7 +52,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.27.0.140913">
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.30.0.144632">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -60,7 +60,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Text.Analyzers" Version="4.14.0">
+    <PackageReference Include="Text.Analyzers" Version="5.6.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -71,11 +71,11 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.28" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.29" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.10" />
   </ItemGroup>
 
   <ItemGroup>
@@ -90,9 +90,6 @@
     <None Update="BlaziconLayers.razor.css" CssScope="blazicon-layers" />
     <None Update="BlaziconLayersText.razor.css" CssScope="blazicon-layers-text" />
     <None Update="BlaziconLayersCounter.razor.css" CssScope="blazicon-layers-counter" />
-  </ItemGroup>
-  <ItemGroup>
-    <EditorConfigFiles Remove="C:\Repos\kyleherzog\Blazicons\Blazicons\.editorconfig" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="blazicons-md-128.png" />

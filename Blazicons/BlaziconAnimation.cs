@@ -6,7 +6,7 @@ namespace Blazicons;
 /// <summary>
 /// Represents an animation to be applied to a Blazicon, including its type and customization options.
 /// </summary>
-public class BlaziconAnimation : IEquatable<BlaziconAnimation>
+public sealed class BlaziconAnimation : IEquatable<BlaziconAnimation>
 {
     private readonly string attributeSuffix;
 
@@ -186,25 +186,25 @@ public class BlaziconAnimation : IEquatable<BlaziconAnimation>
     {
         return other is not null
             && attributeSuffix == other.attributeSuffix
-            && BeatScale == other.BeatScale
-            && BeatFadeOpacity == other.BeatFadeOpacity
-            && BeatFadeScale == other.BeatFadeScale
-            && BounceHeight == other.BounceHeight
-            && BounceJumpScaleX == other.BounceJumpScaleX
-            && BounceJumpScaleY == other.BounceJumpScaleY
-            && BounceLandScaleX == other.BounceLandScaleX
-            && BounceLandScaleY == other.BounceLandScaleY
-            && BounceRebound == other.BounceRebound
-            && BounceStartScaleX == other.BounceStartScaleX
-            && BounceStartScaleY == other.BounceStartScaleY
-            && Delay == other.Delay
+            && BeatScale.EquatesTo(other.BeatScale)
+            && BeatFadeOpacity.EquatesTo(other.BeatFadeOpacity)
+            && BeatFadeScale.EquatesTo(other.BeatFadeScale)
+            && BounceHeight.EquatesTo(other.BounceHeight)
+            && BounceJumpScaleX.EquatesTo(other.BounceJumpScaleX)
+            && BounceJumpScaleY.EquatesTo(other.BounceJumpScaleY)
+            && BounceLandScaleX.EquatesTo(other.BounceLandScaleX)
+            && BounceLandScaleY.EquatesTo(other.BounceLandScaleY)
+            && BounceRebound.EquatesTo(other.BounceRebound)
+            && BounceStartScaleX.EquatesTo(other.BounceStartScaleX)
+            && BounceStartScaleY.EquatesTo(other.BounceStartScaleY)
+            && Delay.EquatesTo(other.Delay)
             && Direction == other.Direction
-            && Duration == other.Duration
-            && FadeOpacity == other.FadeOpacity
-            && FlipAngle == other.FlipAngle
-            && FlipX == other.FlipX
-            && FlipY == other.FlipY
-            && FlipZ == other.FlipZ
+            && Duration.EquatesTo(other.Duration)
+            && FadeOpacity.EquatesTo(other.FadeOpacity)
+            && FlipAngle.EquatesTo(other.FlipAngle)
+            && FlipX.EquatesTo(other.FlipX)
+            && FlipY.EquatesTo(other.FlipY)
+            && FlipZ.EquatesTo(other.FlipZ)
             && IterationCount == other.IterationCount
             && TimingFunction == other.TimingFunction;
     }
@@ -212,7 +212,7 @@ public class BlaziconAnimation : IEquatable<BlaziconAnimation>
     /// <inheritdoc/>
     public override int GetHashCode()
     {
-        var hash = new HashCode();
+        var hash = default(HashCode);
         hash.Add(attributeSuffix);
         hash.Add(BeatScale);
         hash.Add(BeatFadeOpacity);
