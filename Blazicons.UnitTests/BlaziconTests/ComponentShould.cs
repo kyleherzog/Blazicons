@@ -49,6 +49,42 @@ public class ComponentShould : VerifyBase
     }
 
     [TestMethod]
+    public Task RenderWithAnimationGivenBeatSet()
+    {
+        var template = new Blazicon
+        {
+            Svg = IconFactory.Alert.Animate(BlaziconAnimation.Beat),
+        };
+
+        var output = Render.Component(template: template);
+        return Verify(output);
+    }
+
+    [TestMethod]
+    public Task RenderWithAnimationGivenBeatWithCustomDurationSet()
+    {
+        var template = new Blazicon
+        {
+            Svg = IconFactory.Alert.Animate(BlaziconAnimation.Beat.WithDuration(2000)),
+        };
+
+        var output = Render.Component(template: template);
+        return Verify(output);
+    }
+
+    [TestMethod]
+    public Task RenderWithAnimationGivenSpinSet()
+    {
+        var template = new Blazicon
+        {
+            Svg = IconFactory.Alert.Animate(BlaziconAnimation.Spin),
+        };
+
+        var output = Render.Component(template: template);
+        return Verify(output);
+    }
+
+    [TestMethod]
     public Task RenderWithColorGivenColorSetAsHex()
     {
         var template = new Blazicon
@@ -78,6 +114,114 @@ public class ComponentShould : VerifyBase
         var template = new Blazicon
         {
             Svg = IconFactory.Alert.WithSize("20px"),
+        };
+
+        var output = Render.Component(template: template);
+        return Verify(output);
+    }
+
+    [TestMethod]
+    public Task RenderWithTransformGivenFlipHorizontalSet()
+    {
+        var template = new Blazicon
+        {
+            Svg = IconFactory.Alert.FlipHorizontal(),
+        };
+
+        var output = Render.Component(template: template);
+        return Verify(output);
+    }
+
+    [TestMethod]
+    public Task RenderWithTransformGivenFlipVerticalSet()
+    {
+        var template = new Blazicon
+        {
+            Svg = IconFactory.Alert.FlipVertical(),
+        };
+
+        var output = Render.Component(template: template);
+        return Verify(output);
+    }
+
+    [TestMethod]
+    public Task RenderWithTransformGivenGrowCalled()
+    {
+        var template = new Blazicon
+        {
+            Svg = IconFactory.Alert.Grow(2),
+        };
+
+        var output = Render.Component(template: template);
+        return Verify(output);
+    }
+
+    [TestMethod]
+    public Task RenderWithTransformGivenMultipleTransformsSet()
+    {
+        var template = new Blazicon
+        {
+            Svg = IconFactory.Alert.Scale(1.5).Rotate(45).PushRight(2).FlipHorizontal(),
+        };
+
+        var output = Render.Component(template: template);
+        return Verify(output);
+    }
+
+    [TestMethod]
+    public Task RenderWithTransformGivenOffsetSet()
+    {
+        var template = new Blazicon
+        {
+            Svg = IconFactory.Alert.Offset(1, 0.5),
+        };
+
+        var output = Render.Component(template: template);
+        return Verify(output);
+    }
+
+    [TestMethod]
+    public Task RenderWithTransformGivenPushRightCalled()
+    {
+        var template = new Blazicon
+        {
+            Svg = IconFactory.Alert.PushRight(2),
+        };
+
+        var output = Render.Component(template: template);
+        return Verify(output);
+    }
+
+    [TestMethod]
+    public Task RenderWithTransformGivenRotationSet()
+    {
+        var template = new Blazicon
+        {
+            Svg = IconFactory.Alert.Rotate(45),
+        };
+
+        var output = Render.Component(template: template);
+        return Verify(output);
+    }
+
+    [TestMethod]
+    public Task RenderWithTransformGivenScaleSet()
+    {
+        var template = new Blazicon
+        {
+            Svg = IconFactory.Alert.Scale(1.5),
+        };
+
+        var output = Render.Component(template: template);
+        return Verify(output);
+    }
+
+    [TestMethod]
+    public Task RenderWithTransformGivenShrinkCalled()
+    {
+        var template = new Blazicon
+        {
+            Svg = IconFactory.Alert.Shrink(2),
         };
 
         var output = Render.Component(template: template);

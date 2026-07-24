@@ -1,0 +1,17 @@
+span
+{
+    display: inline-block;
+    position: relative;
+    width: 1em;
+    height: 1em;
+    vertical-align: -.125em;
+}
+
+::deep svg[blazicon]
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

@@ -42,6 +42,12 @@ public class Blazicon : BlaziconBase
             result.AddStyleFromAttributes(Attributes);
             result.AddStyle("color", Svg?.Color, !string.IsNullOrEmpty(Svg?.Color));
             result.AddStyle("font-size", Svg?.Size, !string.IsNullOrEmpty(Svg?.Size));
+            result.AddStyle("transform", Svg?.TransformStyle, !string.IsNullOrEmpty(Svg?.TransformStyle));
+
+            foreach (var prop in Svg?.Animation?.ToCssCustomProperties() ?? new Dictionary<string, string>())
+            {
+                result.AddStyle(prop.Key, prop.Value);
+            }
 
             return result.NullIfEmpty();
         }
@@ -62,7 +68,12 @@ public class Blazicon : BlaziconBase
 
             __builder.AddMultipleAttributes(102, AttributesNoStyle);
             __builder.AddAttribute(103, "blazicon");
-            __builder.AddContent(104, new MarkupString(Svg.Content));
+            if (Svg.Animation?.AttributeName is string animAttr)
+            {
+                __builder.AddAttribute(104, animAttr);
+            }
+
+            __builder.AddContent(105, new MarkupString(Svg.Content));
             __builder.CloseElement();
         }
     }

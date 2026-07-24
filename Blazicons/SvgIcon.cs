@@ -6,7 +6,7 @@ namespace Blazicons;
 /// <summary>
 /// Represents an SVG icon to be rendered.
 /// </summary>
-public sealed class SvgIcon : IEquatable<SvgIcon>
+public sealed class SvgIcon : BlaziconContentBase<SvgIcon>, IEquatable<SvgIcon>
 {
     private static readonly ReadOnlyDictionary<string, string?> defaultAttributes = new(new Dictionary<string, string?>()
     {
@@ -35,11 +35,6 @@ public sealed class SvgIcon : IEquatable<SvgIcon>
     public ReadOnlyDictionary<string, string?> Attributes { get; }
 
     /// <summary>
-    /// Gets or sets value to be applied to a the color CSS property.
-    /// </summary>
-    public string? Color { get; set; }
-
-    /// <summary>
     /// Gets the markup content that is to reside between the SVG start and end tags.
     /// </summary>
     public string Content { get; }
@@ -64,11 +59,6 @@ public sealed class SvgIcon : IEquatable<SvgIcon>
             return builder.ToString();
         }
     }
-
-    /// <summary>
-    /// Gets or sets value to be applied to a the font-size CSS property.
-    /// </summary>
-    public string? Size { get; set; }
 
     /// <summary>
     /// Gets the value to be used for the viewbox attribute of the SVG tag.
@@ -102,7 +92,9 @@ public sealed class SvgIcon : IEquatable<SvgIcon>
     /// <summary>
     /// Creates an SVG icon from the specified path data.
     /// </summary>
-    /// <param name="pathData">The path data that is to be used to create a full path tag and then used as the SVG content.</param>
+    /// <param name="pathData">
+    /// The path data that is to be used to create a full path tag and then used as the SVG content.
+    /// </param>
     /// <param name="viewBox">An optional value to specify the size of the SVG view box.</param>
     /// <returns>The newly created <see cref="SvgIcon"/> instance.</returns>
     public static SvgIcon FromPathData(string pathData, string viewBox = "0 0 24 24")
@@ -128,34 +120,31 @@ public sealed class SvgIcon : IEquatable<SvgIcon>
             && Content == other.Content
             && Attributes == other.Attributes
             && Color == other.Color
-            && Size == other.Size;
+            && Size == other.Size
+            && ScaleFactor.EquatesTo(other.ScaleFactor)
+            && Rotation.EquatesTo(other.Rotation)
+            && OffsetX.EquatesTo(other.OffsetX)
+            && OffsetY.EquatesTo(other.OffsetY)
+            && IsFlippedHorizontal == other.IsFlippedHorizontal
+            && IsFlippedVertical == other.IsFlippedVertical
+            && Equals(Animation, other.Animation);
     }
 
     /// <inheritdoc/>
     public override int GetHashCode()
     {
-        return HashCode.Combine(Content, Attributes, Color, Size);
-    }
-
-    /// <summary>
-    /// Applies the specified color to the SVG icon.
-    /// </summary>
-    /// <param name="color">The CSS color value to be applied.</param>
-    /// <returns>The current <see cref="SvgIcon"/> instance.</returns>
-    public SvgIcon WithColor(string? color)
-    {
-        Color = color;
-        return this;
-    }
-
-    /// <summary>
-    /// Applies the specified CSS font-size value to the SVG icon.
-    /// </summary>
-    /// <param name="size">The CSS font-size value to be applied.</param>
-    /// <returns>The current <see cref="SvgIcon"/> instance.</returns>
-    public SvgIcon WithSize(string? size)
-    {
-        Size = size;
-        return this;
+        var hash = default(HashCode);
+        hash.Add(Content);
+        hash.Add(Attributes);
+        hash.Add(Color);
+        hash.Add(Size);
+        hash.Add(ScaleFactor);
+        hash.Add(Rotation);
+        hash.Add(OffsetX);
+        hash.Add(OffsetY);
+        hash.Add(IsFlippedHorizontal);
+        hash.Add(IsFlippedVertical);
+        hash.Add(Animation);
+        return hash.ToHashCode();
     }
 }
