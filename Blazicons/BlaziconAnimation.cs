@@ -61,11 +61,6 @@ public sealed class BlaziconAnimation : IEquatable<BlaziconAnimation>
     public static BlaziconAnimation SpinReverse => new("spin-reverse");
 
     /// <summary>
-    /// Gets the scale factor applied at the peak of the beat animation.
-    /// </summary>
-    public double? BeatScale { get; private set; }
-
-    /// <summary>
     /// Gets the opacity applied at the peak of the beat-fade animation.
     /// </summary>
     public double? BeatFadeOpacity { get; private set; }
@@ -74,6 +69,11 @@ public sealed class BlaziconAnimation : IEquatable<BlaziconAnimation>
     /// Gets the scale factor applied at the peak of the beat-fade animation.
     /// </summary>
     public double? BeatFadeScale { get; private set; }
+
+    /// <summary>
+    /// Gets the scale factor applied at the peak of the beat animation.
+    /// </summary>
+    public double? BeatScale { get; private set; }
 
     /// <summary>
     /// Gets the height of the jump arc in the bounce animation, in em units.
@@ -239,7 +239,8 @@ public sealed class BlaziconAnimation : IEquatable<BlaziconAnimation>
     }
 
     /// <summary>
-    /// Returns a read-only dictionary of CSS custom property names and values representing only the explicitly set customization options.
+    /// Returns a read-only dictionary of CSS custom property names and values representing only the explicitly set
+    /// customization options.
     /// </summary>
     /// <returns>A dictionary of CSS custom property entries to be applied as inline styles.</returns>
     public IReadOnlyDictionary<string, string> ToCssCustomProperties()
@@ -355,17 +356,6 @@ public sealed class BlaziconAnimation : IEquatable<BlaziconAnimation>
     }
 
     /// <summary>
-    /// Sets the scale factor at the peak of the beat animation.
-    /// </summary>
-    /// <param name="scale">The scale factor, or <c>null</c> to use the default.</param>
-    /// <returns>The current <see cref="BlaziconAnimation"/> instance.</returns>
-    public BlaziconAnimation WithBeatScale(double? scale)
-    {
-        BeatScale = scale;
-        return this;
-    }
-
-    /// <summary>
     /// Sets the opacity at the peak of the beat-fade animation.
     /// </summary>
     /// <param name="opacity">The opacity value between 0 and 1, or <c>null</c> to use the default.</param>
@@ -388,9 +378,22 @@ public sealed class BlaziconAnimation : IEquatable<BlaziconAnimation>
     }
 
     /// <summary>
+    /// Sets the scale factor at the peak of the beat animation.
+    /// </summary>
+    /// <param name="scale">The scale factor, or <c>null</c> to use the default.</param>
+    /// <returns>The current <see cref="BlaziconAnimation"/> instance.</returns>
+    public BlaziconAnimation WithBeatScale(double? scale)
+    {
+        BeatScale = scale;
+        return this;
+    }
+
+    /// <summary>
     /// Sets the height of the jump arc in the bounce animation.
     /// </summary>
-    /// <param name="em">The height in em units (typically negative, e.g. <c>-0.5</c>), or <c>null</c> to use the default.</param>
+    /// <param name="em">
+    /// The height in em units (typically negative, e.g. <c>-0.5</c>), or <c>null</c> to use the default.
+    /// </param>
     /// <returns>The current <see cref="BlaziconAnimation"/> instance.</returns>
     public BlaziconAnimation WithBounceHeight(double? em)
     {
@@ -445,7 +448,9 @@ public sealed class BlaziconAnimation : IEquatable<BlaziconAnimation>
     /// <summary>
     /// Sets the rebound height of the bounce animation.
     /// </summary>
-    /// <param name="em">The rebound height in em units (typically negative, e.g. <c>-0.125</c>), or <c>null</c> to use the default.</param>
+    /// <param name="em">
+    /// The rebound height in em units (typically negative, e.g. <c>-0.125</c>), or <c>null</c> to use the default.
+    /// </param>
     /// <returns>The current <see cref="BlaziconAnimation"/> instance.</returns>
     public BlaziconAnimation WithBounceRebound(double? em)
     {
@@ -586,7 +591,9 @@ public sealed class BlaziconAnimation : IEquatable<BlaziconAnimation>
     /// <summary>
     /// Sets the number of times the animation repeats.
     /// </summary>
-    /// <param name="count">The iteration count (e.g. <c>"3"</c> or <c>"infinite"</c>), or <c>null</c> to use the default.</param>
+    /// <param name="count">
+    /// The iteration count (e.g. <c>"3"</c> or <c>"infinite"</c>), or <c>null</c> to use the default.
+    /// </param>
     /// <returns>The current <see cref="BlaziconAnimation"/> instance.</returns>
     public BlaziconAnimation WithIterationCount(string? count)
     {
@@ -597,7 +604,9 @@ public sealed class BlaziconAnimation : IEquatable<BlaziconAnimation>
     /// <summary>
     /// Sets the CSS timing function used by the animation.
     /// </summary>
-    /// <param name="timing">The CSS timing function value (e.g. <c>"ease-in-out"</c>, <c>"linear"</c>), or <c>null</c> to use the default.</param>
+    /// <param name="timing">
+    /// The CSS timing function value (e.g. <c>"ease-in-out"</c>, <c>"linear"</c>), or <c>null</c> to use the default.
+    /// </param>
     /// <returns>The current <see cref="BlaziconAnimation"/> instance.</returns>
     public BlaziconAnimation WithTimingFunction(string? timing)
     {
